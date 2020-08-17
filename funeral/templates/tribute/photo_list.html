@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+	{% block carousel %}
+	<img src="/static/{{STATIC_URL}}images/b.jpg" alt="Second Image" class="d-block w-100"  />
+	
+	{% endblock carousel %}
+
+
+
+{% block content %}
+
+
+	<h3 class="h1" align="center">Gallery of Photos </h3>
+	<div class="container">
+	  <div class="row">
+
+		{% for photo in photos %}
+		 {% if photos.approved %}
+		<p><div class="col-sm-5 ">
+		
+			<p><a href="/media/{{ MEDIA_URL }}{{ photo.image }}" data-lightbox="gallery">
+		<img src="/media/{{ MEDIA_URL }}{{ photo.image }}"   alt="Photo Share" width="300" height="300px" class="img-rounded img-responsive centere view zoom">
+	</a></p>
+			
+			
+		</p></div>
+		{% endif %}
+	{% endfor %}
+		</div></div>
+	</div>
+
+
+{% endblock %}

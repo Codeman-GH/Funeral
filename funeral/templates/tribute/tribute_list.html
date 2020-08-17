@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+	{% block carousel %}
+		<img src="/static/{{STATIC_URL}}images/b.jpg" alt="Second Image" class="d-block w-100"  />
+	
+	{% endblock carousel %}
+
+
+
+{% block content %}
+
+
+	<h3 class="h1" align="center">Tribute List</h3>
+	<div class="container">
+	  <div class="row">
+
+		{% for tribute in tributes %}
+		 {% if tribute.approved %}
+		<p><div class="col-md-8 jumbotron offset-md-2">
+			<a href="{% url 'tribute_details' tribute.id %}"> 
+			<h1 class="h1">{{ tribute.name|capfirst }}</h1>
+				{% if tribute.image %}
+					<p><img src="/media/{{ MEDIA_URL }}{{ tribute.image }}"   alt="Default Image for tribute" width="200" class="img-rounded img-responsive"></a>
+			
+					</p>
+				{% endif %}
+					<p>{{ tribute.message |capfirst | truncatewords:"50" }}</p>
+					<p><b>{{ tribute.posted_on |date:"D d M Y" }}</b></p>
+			
+		
+		</p></div>
+		 {% endif %}
+		{% endfor %}
+		</div></div>
+	</div>
+
+
+{% endblock %}

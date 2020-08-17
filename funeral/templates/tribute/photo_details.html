@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	
+	<div class="container ">
+	<div class="row">
+	<div class="col-sm-10 offset-sm-1 review-nodule jumbotron" id="view-review">
+	<a href="{% url 'photo_list' %}" class="btn btn-dark btn-lg fa fa-arrow-left"> </a>
+
+
+	
+	<div class="col-sm-8 offset-sm-2">
+	<h1 ><span style="font-family:sans-serif; font-size:32">{{ photo.name |capfirst }}</span></h1>
+		
+	
+	{% if photo.image %}
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-8">
+	<p><a href="/media/{{ MEDIA_URL }}{{ photo.image }}" data-lightbox="gallery">
+		<img src="/media/{{ MEDIA_URL }}{{ photo.image }}"   alt="Photo Share" width="300" height="300px" class="img-rounded img-responsive pull-right view zoom">
+	</a></p>
+	</div>
+	{% endif %}
+	
+
+	
+
+
+</div>	
+
+
+
+
+
+
+
+
+
+	</div>
+
+</div>
+</div>
+	
+{% endblock %}

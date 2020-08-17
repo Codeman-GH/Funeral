@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+	{% block carousel %}
+	<img src="/static/{{STATIC_URL}}images/b.jpg" alt="Second Image" class="d-block w-100"  />
+	
+	{% endblock carousel %}
+
+
+
+
+{% block content %}
+
+	<h3 class="h1" align="center">Pool of memories</h3>
+	<div class="container">
+	  <div class="row">
+
+		{% for memory in memories %}
+		 {% if memory.approved %}
+		<p><div class="col-md-8 jumbotron offset-md-2">
+			<a href="{% url 'memory_details' memory.id %}"> 
+			<h1 class="h1">{{ memory.name|capfirst }}</h1>
+			<p>{{ memory.message |capfirst | truncatewords:"50" }}</p>
+			<p><b>{{ memory.posted_on |date:"D d M Y" }}</b></p>
+			
+		
+		</p></div>
+		 {% endif %}
+		{% endfor %}
+		</div></div>
+	</div>
+
+
+
+
+	
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

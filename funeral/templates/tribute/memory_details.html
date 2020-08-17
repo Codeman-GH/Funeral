@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+	{% block carousel %}
+	<img src="/static/{{STATIC_URL}}images/b.jpg" alt="Second Image" class="d-block w-100"  />
+	
+	{% endblock carousel %}
+
+
+
+{% block content %}
+	
+	<div class="container ">
+	<div class="row">
+	<div class="col-sm-10 offset-sm-1 review-nodule jumbotron" id="view-review">
+	<a href="{% url 'memory_list' %}" class="btn btn-dark btn-lg fa fa-arrow-left"> </a>
+
+
+	
+	<div class="col-sm-8 offset-sm-2">
+	<h1 class="lead"> Name  </h1> 
+	<h1 ><span style="font-family:sans-serif; font-size:32">{{ memory.name |capfirst }}</span></h1>
+	<h1 class="h1">Message<h1
+	
+	<h1 class="lead"> {{ memory.message }}</h1>
+	
+
+	
+		
+	<h1 class="h3">Posted on: {{ memory.posted_on |date:"D d M Y" }}</h4>
+
+	
+
+
+</div>	
+
+	</div>
+
+</div>
+</div>
+	
+{% endblock %}
