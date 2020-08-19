@@ -1,8 +1,61 @@
 {% extends "base.html" %}
+	{% block navigation %}
+		<<div class="container">
+			<div class="row">
+				<section class="col-md-12 ">
+					   <!--Navbar-->
+					<nav class="navbar navbar-expand-lg navbar-dark black navbar-fixed navbar-light fixed-top">
+
+					    <!-- Navbar brand -->
+					   <!--  <a class="navbar-brand" href="#">icon</a>
+
+					    <!-- Collapse button -->
+					    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+					        aria-expanded="false" aria-label="Toggle navigation">
+					        <span class="navbar-toggler-icon"></span>
+					    </button>
+
+					    <!-- Collapsible content -->
+					    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+					        <!-- Links -->
+					        <ul class="navbar-nav mx-auto">
+					            <li class="nav-item ">
+					                <a class="nav-link pr-5 pl-5" href="{% url 'homepage' %}">Homepage
+					                    <span class="sr-only">(current)</span>
+					                </a>
+					            </li>
+					            <li class="nav-item">
+					                <a class="nav-link pr-5 pl-5" href="{% url 'biography' %}">Biography</a>
+					            </li>
+					            <li class="nav-item">
+					                <a class="nav-link pr-5 pl-5" href="{% url 'tribute_list' %}">Tribute</a>
+					            </li>
+					            <li class="nav-item active">
+					                <a class="nav-link pr-5 pl-5" href="{% url 'memory_list' %}">Memories</a>
+					            </li>								
+					            <li class="nav-item">
+					                <a class="nav-link pr-5 pl-5"href="{% url 'photo_list' %}">Photos</a>
+					            </li>
+					            
+					        
+					        
+							</ul>
+					        <!-- Links -->
+					    </div>
+					    <!-- Collapsible content -->
+
+					</nav>
+					<!--/.Navbar-->
+				</section>
+			</div> <!--nav-->
+		</div>
+	{% endblock navigation %}
+
 
 
 	{% block carousel %}
-	<img src="/static/{{STATIC_URL}}images/b.jpg" alt="Second Image" class="d-block w-100"  />
+	<img src="/static/{{STATIC_URL}}images/corousel-02.jpg" alt="Second Image" class="d-block w-100"  />
 	
 	{% endblock carousel %}
 
@@ -12,22 +65,23 @@
 	
 	<div class="container ">
 	<div class="row">
-	<div class="col-sm-10 offset-sm-1 review-nodule jumbotron" id="view-review">
-	<a href="{% url 'memory_list' %}" class="btn btn-dark btn-lg fa fa-arrow-left"> </a>
-
-
+	<div class="col-sm-10 offset-sm-1  jumbotron">
+	
 	
 	<div class="col-sm-8 offset-sm-2">
-	<h1 class="lead"> Name  </h1> 
-	<h1 ><span style="font-family:sans-serif; font-size:32">{{ memory.name |capfirst }}</span></h1>
-	<h1 class="h1">Message<h1
+	<h1> <span style="font-family:sans-serif; font-size:32"> Name  </h1> 
+	<h1 class="display-1">{{ memory.name |capfirst }}</span></h1>
 	
-	<h1 class="lead"> {{ memory.message }}</h1>
+	
+	<h1 class="lead" > {{ memory.message }}</h1>
 	
 
 	
 		
-	<h1 class="h3">Posted on: {{ memory.posted_on |date:"D d M Y" }}</h4>
+	<h1 class="h4" >Posted on: {{ memory.posted_on |date:"D d M Y" }}</h4>
+	
+	<a href="{% url 'memory_list' %}" class="btn btn-dark btn-lg fa fa-arrow-left"> </a>
+
 
 	
 
