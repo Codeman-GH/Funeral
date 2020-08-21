@@ -8,14 +8,15 @@
 <a href="{% url 'photo_list' %}" class="btn btn-dark btn-lg fa fa-arrow-left"> </a>
 <h1 class="h1">Share A Photo</h1>
 <br><br>
+ <div class="form-group">
 <form method="POST" class="post-form" action="/photo_add/" enctype="multipart/form-data" class="form-control" >{% csrf_token %}
 {{ form | crispy }}
 
+</div>
 
+<button type="submit" class="save btn btn-dark btn-lg "> Save </button>
+</button>  <button type="refresh" class="save btn btn-warning btn-lg "> Cancel </button>
 
-<button type="submit" class="save btn btn-dark btn-lg "> Save
-</button>  <button type="refresh" class="save btn btn-warning btn-lg "> Cancel
-</button>
 <br><br><br><br><br>
 </div>
 </div>

@@ -15,9 +15,76 @@ from django.core.paginator import Paginator
 
 #Create views here.
 def homepage(request):
-    return render(request, 'tribute/homepage.html', {
+    if request.method == 'POST':
+        form_tribute = TributeForm(request.POST, request.FILES)  
+        if form_tribute.is_valid():
+            
+            p = form_tribute.save(commit = False)
+            p.posted_on = timezone.now()
+            p.save()
+                        
+            return HttpResponseRedirect('/tribute_list')
 
-})
+    else:
+        form_tribute = TributeForm()
+        args = {}
+
+
+        args['form_tribute'] = form_tribute,
+
+
+    if request.method == 'POST':
+        form_memory = MemoryForm(request.POST)
+        if form_memory.is_valid():
+            p = form_memory.save(commit = False)
+            p.posted_on = timezone.now()
+            p.save()
+                        
+            return HttpResponseRedirect('/memory_list')
+
+    else:
+        form_memory = MemoryForm()
+
+
+    args = {}
+
+
+    args['form_memory'] = form_memory,
+
+
+
+
+
+
+    if request.method == 'POST':
+        form_photo = PhotoForm(request.POST, request.FILES)
+        if form_photo.is_valid():
+            p = form_photo.save(commit = False)
+            p.posted_on = timezone.now()
+            p.save()
+                        
+            return HttpResponseRedirect('/photo_list')
+
+    else:
+        form_photo = PhotoForm()
+
+
+    args = {}
+
+
+    args['form_photo'] = form_photo,
+
+    return render(request, 'tribute/homepage.html', {
+                'form_tribute': form_tribute,
+                'form_memory': form_memory,
+                'form_photo': form_photo,
+                
+
+
+ })
+
+
+
 
 
 
@@ -92,92 +159,92 @@ def photo_details(request, id):
 
  
 
-
-def tribute_add(request):
-    if request.method == 'POST':
-
-        form = TributeForm(request.POST, request.FILES)
-        if form.is_valid():
-            p = form.save(commit = False)
-            p.posted_on = timezone.now()
-            p.save()
-                        
-            return HttpResponseRedirect('/tribute_list')
-
-    else:
-        form = TributeForm()
-
-
-    args = {}
-
-
-    args['form'] = form,
-
-    return render(request, 'tribute/tribute_add.html', {
-        'form': form,
-
-
-})
-
-
-
-
-def memory_add(request):
-    if request.method == 'POST':
-
-        form = MemoryForm(request.POST)
-        if form.is_valid():
-            p = form.save(commit = False)
-            p.posted_on = timezone.now()
-            p.save()
-                        
-            return HttpResponseRedirect('/memory_list')
-
-    else:
-        form = MemoryForm()
-
-
-    args = {}
-
-
-    args['form'] = form,
-
-    return render(request, 'tribute/memory_add.html', {
-        'form': form,
-
-
-})
+##
+##def tribute_add(request):
+##    if request.method == 'POST':
+##
+##        form_tribute = TributeForm(request.POST, request.FILES)
+##        if form_tribute.is_valid():
+##            p = form_tribute.save(commit = False)
+##            p.posted_on = timezone.now()
+##            p.save()
+##                        
+##            return HttpResponseRedirect('/tribute_list')
+##
+##    else:
+##        form_tribute = TributeForm()
+##
+##
+##    args = {}
+##
+##
+##    args['form'] = form,
+##
+##    return render(request, 'tribute/tribute_add.html', {
+##        'form': form,
+##
+##
+##})
 
 
 
 
+##def memory_add(request):
+##    if request.method == 'POST':
+##
+##        form = MemoryForm(request.POST)
+##        if form.is_valid():
+##            p = form.save(commit = False)
+##            p.posted_on = timezone.now()
+##            p.save()
+##                        
+##            return HttpResponseRedirect('/memory_list')
+##
+##    else:
+##        form = MemoryForm()
+##
+##
+##    args = {}
+##
+##
+##    args['form'] = form,
+##
+##    return render(request, 'tribute/memory_add.html', {
+##        'form': form,
+##
+##
+##})
 
-def photo_add(request):
-    if request.method == 'POST':
-
-        form = PhotoForm(request.POST, request.FILES)
-        if form.is_valid():
-            p = form.save(commit = False)
-            p.posted_on = timezone.now()
-            p.save()
-                        
-            return HttpResponseRedirect('/photo_list')
-
-    else:
-        form = PhotoForm()
 
 
-    args = {}
 
-
-    args['form'] = form,
-
-    return render(request, 'tribute/photo_add.html', {
-        'form': form,
-
-
-})
-
+##
+##def photo_add(request):
+##    if request.method == 'POST':
+##
+##        form = PhotoForm(request.POST, request.FILES)
+##        if form.is_valid():
+##            p = form.save(commit = False)
+##            p.posted_on = timezone.now()
+##            p.save()
+##                        
+##            return HttpResponseRedirect('/photo_list')
+##
+##    else:
+##        form = PhotoForm()
+##
+##
+##    args = {}
+##
+##
+##    args['form'] = form,
+##
+##    return render(request, 'tribute/photo_add.html', {
+##        'form': form,
+##
+##
+##})
+##
 
 
 

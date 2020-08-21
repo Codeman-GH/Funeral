@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
+
 {% block content %}
 	
-	
-	
-	
+
+		
+		
+<div class="row">
 	
 	<div class="container">
 			
-		<section class="col-sm-12 col-md-11  offset-sm-1 offset-md-2">
+		<section class="col-sm-12 col-md-12  col-lg-12 ">
 				
 				
 			
@@ -17,8 +21,12 @@
 				<source src="static/{{STATIC_URL}}videos/themesong.mp4" type="video/mp4"></source>
 			</video>
 		</section>
-	  <div class="row">
- <section class="col-sm-12 col-md-11  offset-sm-1 offset-md-2">	
+		 
+	  
+	  
+	  
+	  
+ <section class="col-sm-12 col-md-12  col-lg-12  ">	
 				<h1 class="h1">The homepage here!</h1>
 				
 				<p class="lead">
@@ -36,17 +44,133 @@ Etiam sed quam a felis pretium rutrum et ut odio. Proin eros augue, fringilla at
 
 
 				</p>
-				
-				
-		<p><a href="{% url 'tribute_add' %}" class="btn btn-lg btn-dark btn-lg fa fa-commenting-o"> Add a Tribute </a>
-	
-	<a href="{% url 'memory_add' %}" class="btn btn-lg btn-dark btn-lg fa fa-comments-o">  Share a Memory </a>
 		
-	<a href="{% url 'photo_add' %}" class="btn btn-lg btn-dark btn-lg fa fa-camera"> Share a Photo </a></p>
-		
-		</section>
+</section>
 
-	</section>
+
+
+
+ <section class="col-sm-8 col-md-8  col-lg-8 offset-sm-1 offset-md-1 offset-lg-1">	
+
+ 
+<button type="button" class="btn btn-lg btn-lg fa fa-commenting-o btn-block  grey darken-3" data-toggle="modal" data-target="#tributeModal">
+ Post A Tribute
+</button>
+
+<button type="button" class="btn btn-lg grey darken-3 btn-lg fa fa-comments-o btn-block my-1" data-toggle="modal" data-target="#memoryModal">
+ Share A  Memory 
+</button>
+
+<button type="button" class="btn btn-lg grey darken-3 btn-lg fa fa-camera btn-block" data-toggle="modal" data-target="#photoModal">
+ Share A Photo
+</button>
+
+
+
+
+<!-- Modal -->
+<form method="POST" class="post-form" action="/" enctype="multipart/form-data" class="form-control " >{% csrf_token %}
+<div class="modal fade" id="tributeModal" tabindex="-1" role="dialog" aria-labelledby="tributeModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	
+      <div class="modal-header">
+        <h5 class="modal-title h1" id="exampleModalLabel">Post A Tribute </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+       
+		{{ form_tribute.name }}
+		<br/>
+		{{ form_tribute.message }} <br/><br/>
+		{{ form_tribute.image }}
+
+      </div>
+      <div class="modal-footer">
+	<button type="submit" class="save btn btn-dark btn-lg align-right"> Post </button>
+      </div>
+	
+    </div>
+
+  </div>
+</div>
+</form>
+
+
+
+
+
+<!-- Modal -->
+<form method="POST" class="post-form" action="/" enctype="multipart/form-data" class="form-control " >{% csrf_token %}
+<div class="modal fade" id="memoryModal" tabindex="-1" role="dialog" aria-labelledby="memoryModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	
+      <div class="modal-header">
+        <h5 class="modal-title h1" id="exampleModalLabel">Share A Memory </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+       
+		{{ form_memory.name }}
+		<br/>
+		{{ form_memory.message }} <br/><br/>
+		
+
+      </div>
+      <div class="modal-footer">
+	<button type="submit" class="save btn btn-dark btn-lg align-right"> Post </button>
+      </div>
+	
+    </div>
+
+  </div>
+</div>
+</form>
+
+
+
+
+<!-- Modal -->
+<form method="POST" class="post-form" action="/" enctype="multipart/form-data" class="form-control " >{% csrf_token %}
+<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	
+      <div class="modal-header">
+        <h5 class="modal-title h1" id="exampleModalLabel">Share A Photo of Kwame Oppong-Hinne </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+       
+		{{ form_photo.name }}
+		<br/>
+		{{ form_photo.image }}
+
+      </div>
+      <div class="modal-footer">
+	<button type="submit" class="save btn btn-dark btn-lg align-right"> Post </button>
+      </div>
+	
+    </div>
+
+  </div>
+</div>
+</form>
+
+
+
+
+
+
+</section>
+
 	</div>
 	</div>	
 	

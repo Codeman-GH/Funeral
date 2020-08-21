@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 	{% block navigation %}
-		<<div class="container">
+			<div class="container" style="font-size:22px; font-family:Oleo Script, cursive;">
 			<div class="row">
-				<section class="col-md-12 ">
+				<section class="col-sm-12 col-md-12  col-lg-12 ">
 					   <!--Navbar-->
-					<nav class="navbar navbar-expand-lg navbar-dark black navbar-fixed navbar-light fixed-top">
+					<nav class="navbar navbar-expand-lg navbar-dark black navbar-fixed navbar-light mb-4">
 
 					    <!-- Navbar brand -->
 					   <!--  <a class="navbar-brand" href="#">icon</a>
@@ -20,23 +20,23 @@
 					    <div class="collapse navbar-collapse" id="basicExampleNav">
 
 					        <!-- Links -->
-					        <ul class="navbar-nav mx-auto">
+					        <ul class="navbar-nav mx-auto nav-fill w-100 ">
 					            <li class="nav-item ">
-					                <a class="nav-link pr-5 pl-5" href="{% url 'homepage' %}">Homepage
+					                <a class="nav-link pr-5 " href="{% url 'homepage' %}">Homepage
 					                    <span class="sr-only">(current)</span>
 					                </a>
 					            </li>
-					            <li class="nav-item  ">
-					                <a class="nav-link pr-5 pl-5" href="{% url 'biography' %}">Biography</a>
+					            <li class="nav-item ">
+					                <a class="nav-link pr-5" href="{% url 'biography' %}">Biography</a>
 					            </li>
 					            <li class="nav-item active">
-					                <a class="nav-link pr-5 pl-5" href="{% url 'tribute_list' %}">Tribute</a>
+					                <a class="nav-link pr-5 " href="{% url 'tribute_list' %}">Tribute</a>
 					            </li>
 					            <li class="nav-item">
-					                <a class="nav-link pr-5 pl-5" href="{% url 'memory_list' %}">Memories</a>
+					                <a class="nav-link pr-5 " href="{% url 'memory_list' %}">Memories</a>
 					            </li>								
 					            <li class="nav-item">
-					                <a class="nav-link pr-5 pl-5"href="{% url 'photo_list' %}">Photos</a>
+					                <a class="nav-link pr-5 "href="{% url 'photo_list' %}">Photos</a>
 					            </li>
 					            
 					        
@@ -90,13 +90,12 @@
 
 
 	<h3 class="display-1" align="center">Tribute List</h3>
-	<div class="container">
-	  <div class="row">
 
+	<div class="jumbotron">
 		{% for tribute in tributes %}
 		 {% if tribute.approved %}
 		
-		<div class="col-md-8 jumbotron offset-md-2">
+		
 			
 			<h1 class="display-4">{{ tribute.name|capfirst }}</h1>
 			 
@@ -108,16 +107,14 @@
 					</p>
 				{% endif %}
 					<p class="lead" >{{ tribute.message |capfirst | truncatewords:"50" }}</p>
-					<a href="{% url 'tribute_details' tribute.id %}" class="btn btn-md btn-dark btn-lg fa fa-comments-o"> Read More </a>
+					<a href="{% url 'tribute_details' tribute.id %}" class="align-right btn btn-md btn-dark btn-lg fa fa-comments-o"> Read More </a>
 					
 					<p class="h4"><b>{{ tribute.posted_on |date:"D d M Y" }}</b></p>
 			
 		
-		</div>
+		
 		 {% endif %}
 		{% endfor %}
-		</div></div>
 	</div>
-
 
 {% endblock %}

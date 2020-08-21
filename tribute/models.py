@@ -30,7 +30,7 @@ def  get_upload_file_name(instance, filename):
 class Tribute(models.Model):
     name = models.CharField(max_length=100)
     message = models.TextField()
-    image = models.FileField(upload_to= get_upload_file_name)
+    image = models.ImageField(upload_to= get_upload_file_name, blank=True)
     posted_on = models.DateTimeField('Date Posted')
     approved = models.BooleanField(default=False)
 
@@ -79,8 +79,8 @@ class Memory(models.Model):
 
 
 class Photo(models.Model):
-    name = models.CharField(max_length=100)
-    image = models.FileField(upload_to = get_upload_file_name)
+    name = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to = get_upload_file_name)
     posted_on = models.DateTimeField('Date Posted')
     appoved = models.BooleanField(default=False)
 

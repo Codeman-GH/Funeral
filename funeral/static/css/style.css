@@ -1,27 +1,6 @@
 
-a {
-    color: #404040;
-    text-decoration: none;
-}
 
-a:hover, a:focus {
-    color: #969696;
-    text-decoration: underline;
-}
-
-
-body, html {
-    height: 100%;
-}
-.bg {
-    /* The image used */
-    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg");
-
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+form-control select,
+form-control input[type=text] {
+  height: 30px;
 }

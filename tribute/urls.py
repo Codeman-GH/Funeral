@@ -18,9 +18,9 @@ urlpatterns =[
             url(r'^memory_details/(?P<id>\d+)/$', tributeviews.memory_details, name='memory_details'),
             url(r'^photo_details/(?P<id>\d+)/$', tributeviews.photo_details, name='photo_details'),
 
-            url(r'^tribute_add/$', tributeviews.tribute_add, name='tribute_add'),
-            url(r'^memory_add/$', tributeviews.memory_add, name='memory_add'),
-            url(r'^photo_add/$', tributeviews.photo_add, name='photo_add'),
+           # url(r'^tribute_add/$', tributeviews.tribute_add, name='tribute_add'),
+           # url(r'^memory_add/$', tributeviews.memory_add, name='memory_add'),
+            #url(r'^photo_add/$', tributeviews.photo_add, name='photo_add'),
 
             
             
