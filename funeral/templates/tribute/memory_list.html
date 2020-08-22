@@ -88,10 +88,10 @@
 			<h1 class="align-center">{{ memory.name|capfirst }}</h1>
 			
 			<p>{{ memory.message |capfirst | truncatewords:"50" }} <br/>
-			 <a href="{% url 'memory_details' memory.id %}" class="btn btn-md btn-dark btn-lg fa fa-comments-o"> Read More </a>
+			 <a href="{% url 'memory_details' memory.id %}" class="btn btn-lg btn-dark btn-lg fa fa-comments-o"> Read More </a>
 			 
 			 </p>
-			<p><b>{{ memory.posted_on |date:"D d M Y" }}</b></p>
+			<p><b>Posted On: {{ memory.posted_on |date:"D d M Y" }}</b></p>
 			
 		
 		</section>

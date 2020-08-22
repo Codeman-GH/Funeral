@@ -10,7 +10,7 @@ class TributeAdmin(admin.ModelAdmin):
 
 
 class MemoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'memories', 'message', 'posted_on']
+    list_display = ['name',  'message', 'posted_on']
 
 
 class PhotoAdmin(admin.ModelAdmin):

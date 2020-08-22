@@ -89,13 +89,13 @@
 {% block content %}
 
 
-	<h3 class="display-1" align="center">Tribute List</h3>
+<h3 class="display-1" align="center">Tribute List</h3>
 
-	<div class="jumbotron">
+	
 		{% for tribute in tributes %}
 		 {% if tribute.approved %}
 		
-		
+		<section class="col-md-8 jumbotron offset-md-2">
 			
 			<h1 class="display-4">{{ tribute.name|capfirst }}</h1>
 			 
@@ -107,14 +107,16 @@
 					</p>
 				{% endif %}
 					<p class="lead" >{{ tribute.message |capfirst | truncatewords:"50" }}</p>
-					<a href="{% url 'tribute_details' tribute.id %}" class="align-right btn btn-md btn-dark btn-lg fa fa-comments-o"> Read More </a>
+					{% if tribute.message|length > 51 %}
+					<p><a href="{% url 'tribute_details' tribute.id %}" class=" btn btn-lg btn-dark btn-lg fa fa-comments-o"> Read More </a></p>
 					
-					<p class="h4"><b>{{ tribute.posted_on |date:"D d M Y" }}</b></p>
-			
+					{% endif %}
+					<p class="h4 text-left">Posted On: <b>{{ tribute.posted_on |date:"D d M Y" }}</b></p>
+
 		
-		
+		</section>
 		 {% endif %}
 		{% endfor %}
-	</div>
+	
 
 {% endblock %}

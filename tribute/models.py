@@ -30,7 +30,7 @@ def  get_upload_file_name(instance, filename):
 class Tribute(models.Model):
     name = models.CharField(max_length=100)
     message = models.TextField()
-    image = models.ImageField(upload_to= get_upload_file_name, blank=True)
+    image = models.ImageField(upload_to= get_upload_file_name,null=True, blank=True)
     posted_on = models.DateTimeField('Date Posted')
     approved = models.BooleanField(default=False)
 
@@ -52,15 +52,7 @@ class Tribute(models.Model):
 
 
 class Memory(models.Model):
-    memories = 'memories'
-    tributes = 'tributes'
-
-    memories_choices = ((memories, 'Memories'),(tributes, 'Tributes'))
-    
-
-
     name = models.CharField(max_length=100)
-    memories = models.CharField(max_length=10, choices=memories_choices, default=memories)
     message = models.TextField()
     posted_on = models.DateTimeField('Date Posted')
     approved = models.BooleanField(default=False)
@@ -79,7 +71,7 @@ class Memory(models.Model):
 
 
 class Photo(models.Model):
-    name = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
     image = models.ImageField(upload_to = get_upload_file_name)
     posted_on = models.DateTimeField('Date Posted')
     appoved = models.BooleanField(default=False)

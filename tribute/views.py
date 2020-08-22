@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, render, get_object_or_404
 from django.utils import timezone
 from .models import Tribute, Memory, Photo
-from .forms import TributeForm,MemoryForm, PhotoForm
+from .forms import TributeForm, MemoryForm, PhotoForm
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template.backends import *
 #from haystack.query import SearchQuerySet
@@ -15,53 +15,56 @@ from django.core.paginator import Paginator
 
 #Create views here.
 def homepage(request):
-    if request.method == 'POST':
-        form_tribute = TributeForm(request.POST, request.FILES)  
-        if form_tribute.is_valid():
-            
-            p = form_tribute.save(commit = False)
+
+
+
+
+
+        
+
+
+
+######################################
+
+
+    if request.method == 'POST' and 'btnTribute' in request.POST:
+        
+        tribute_form = TributeForm(request.POST, request.FILES)
+        
+        if tribute_form.is_valid():
+            p = tribute_form.save(commit =False)
             p.posted_on = timezone.now()
             p.save()
-                        
+           
+
             return HttpResponseRedirect('/tribute_list')
-
     else:
-        form_tribute = TributeForm()
-        args = {}
+        tribute_form = TributeForm()
 
 
-        args['form_tribute'] = form_tribute,
+        args ={}
 
-
-    if request.method == 'POST':
-        form_memory = MemoryForm(request.POST)
-        if form_memory.is_valid():
-            p = form_memory.save(commit = False)
-            p.posted_on = timezone.now()
-            p.save()
-                        
-            return HttpResponseRedirect('/memory_list')
-
-    else:
-        form_memory = MemoryForm()
-
-
-    args = {}
-
-
-    args['form_memory'] = form_memory,
+        args['tribute_form'] = tribute_form
 
 
 
 
 
+    
 
-    if request.method == 'POST':
+###########################################
+
+
+##############################
+
+
+    if request.method == 'POST' and 'btnPhoto' in request.POST:
         form_photo = PhotoForm(request.POST, request.FILES)
         if form_photo.is_valid():
             p = form_photo.save(commit = False)
             p.posted_on = timezone.now()
             p.save()
+            
                         
             return HttpResponseRedirect('/photo_list')
 
@@ -74,14 +77,56 @@ def homepage(request):
 
     args['form_photo'] = form_photo,
 
+
+ 
+
+
+
+
+    if request.method == 'POST' and 'btnMemory' in request.POST:
+        memory_form = MemoryForm(request.POST)  
+        if memory_form.is_valid():
+            
+            
+            
+            mf =memory_form.save(commit = False)
+            mf.posted_on = timezone.now()
+            mf.save()
+
+            
+                        
+            return HttpResponseRedirect('/memory_list')
+
+    else:
+        memory_form = MemoryForm()
+        args = {}
+
+
+        args['memory_form'] = memory_form,
+
+
+
+
+
+    
+
     return render(request, 'tribute/homepage.html', {
-                'form_tribute': form_tribute,
-                'form_memory': form_memory,
+                'tribute_form': tribute_form,
                 'form_photo': form_photo,
-                
+                 'memory_form': memory_form,
+
+ }
 
 
- })
+
+
+
+
+ )
+
+
+
+
 
 
 
@@ -97,7 +142,7 @@ def biography(request):
 
 
 def tribute_list(request, id=1):
-    tributes = Tribute.objects.all()
+    tributes = Tribute.objects.all().order_by('-id')
     return render(request, 'tribute/tribute_list.html', {
 
     'tributes': tributes,
@@ -105,7 +150,7 @@ def tribute_list(request, id=1):
     
 
 def memory_list(request, id=1):
-    memories = Memory.objects.all()
+    memories = Memory.objects.all().order_by('-id')
     return render(request, 'tribute/memory_list.html', {
 
     'memories': memories,
@@ -113,7 +158,7 @@ def memory_list(request, id=1):
 
 
 def photo_list(request, id=1):
-    photos = Photo.objects.all()
+    photos = Photo.objects.all().order_by('-id')
     return render(request, 'tribute/photo_list.html', {
 
     

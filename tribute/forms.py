@@ -49,9 +49,7 @@ class MemoryForm(forms.ModelForm):
                         
                 'name': forms.TextInput(attrs={'class': 'form-control', 'style': 'font-size: medium', 'placeholder':'Name...'}),
                 'message': forms.Textarea(attrs={'class': 'form-control', 'style': 'font-size: medium', 'placeholder':'Memory goes here...'}),
-
-
-                }    
+ }    
 
 
 
@@ -68,4 +66,4 @@ class PhotoForm(forms.ModelForm):
 
                 'name': forms.TextInput(attrs={'class': 'form-control', 'style': 'font-size: medium', 'placeholder':'Name...'}),
            
-                }    
+ }    
